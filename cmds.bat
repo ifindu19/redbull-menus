@@ -1,6 +1,13 @@
 @echo off
-set /P ip=enter ip-
+if not exist ip.bat goto makeip else goto list
+:makeip
+set /P ip=Enter target IP -
+(
+echo @echo off
+echo ssh root@%ip%
+)>"ip.bat"
 cls
+:list
 echo 1. etc password dump
 echo 2. list installed apps
 echo 3. phone build and version
